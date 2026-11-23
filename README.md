@@ -15,6 +15,14 @@ End-to-end ML pipeline predicting customer churn using the IBM Telco dataset, wi
 | Random Forest | 0.83 | 0.57 |
 | XGBoost | 0.84 | 0.61 |
 
+![ROC curves for the three models](data/roc_curves.png)
+
+## What drives churn (SHAP)
+
+![SHAP feature importance](data/shap_importance.png)
+
+![SHAP beeswarm plot](data/shap_beeswarm.png)
+
 ## Tech stack
 | Component | Tool |
 |---|---|
@@ -32,26 +40,29 @@ End-to-end ML pipeline predicting customer churn using the IBM Telco dataset, wi
     python3.11 -m venv venv
     source venv/bin/activate
     pip install -r requirements.txt
+
+On macOS, XGBoost also needs the OpenMP library:
+
     brew install libomp
 
 ## Run
 
-Step 1 - Train the models:
+Trained models are already included in `models/`, so you can launch the dashboard directly:
+
+    python -m streamlit run app.py
+
+To retrain the models from scratch:
 
     cd notebooks
     python -m jupyter nbconvert --to notebook --execute 01_eda.ipynb --output 01_eda.ipynb
     python -m jupyter nbconvert --to notebook --execute 02_model.ipynb --output 02_model.ipynb
     cd ..
 
-Step 2 - Launch the dashboard:
-
-    python -m streamlit run app.py
-
 ## Key findings
-- 26.5% churn rate — imbalanced dataset, F1 is more meaningful than accuracy
+- 26.5% churn rate: the dataset is imbalanced, so F1 is more meaningful than accuracy
 - Month-to-month contracts have 3x higher churn than two-year contracts
 - Fiber optic customers churn more despite paying premium prices
-- Short tenure is the strongest churn signal — newer customers are highest risk
+- Short tenure is the strongest churn signal: newer customers are highest risk
 - SHAP confirms tenure, MonthlyCharges, and Contract type as top drivers
 
 ## Skills demonstrated
