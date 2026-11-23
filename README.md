@@ -1,5 +1,7 @@
 # Customer Churn Predictor
 
+**Live demo:** https://churn-predictor01.streamlit.app/
+
 End-to-end ML pipeline predicting customer churn using the IBM Telco dataset, with three-model comparison, SHAP explainability, and a live prediction dashboard.
 
 ## What it does
