@@ -22,7 +22,7 @@ model, scaler, feature_names = load_artifacts()
 # ── Page config ──
 st.set_page_config(page_title="Churn Predictor", page_icon="📊", layout="wide")
 st.title("📊 Customer Churn Predictor")
-st.caption("XGBoost model trained on IBM Telco dataset — 80% AUC")
+st.caption("XGBoost model trained on IBM Telco dataset, 0.84 AUC")
 
 # ── Tabs ──
 tab1, tab2, tab3 = st.tabs(["🔮 Live Prediction", "📈 Model Performance", "🔍 SHAP Explainability"])
